@@ -8,6 +8,9 @@ DC_PROJECT="dependency-check scan: $(pwd)"
 DATA_DIRECTORY="$DC_DIRECTORY/data"
 CACHE_DIRECTORY="$DC_DIRECTORY/data/cache"
 
+# https://stackoverflow.com/a/48348531
+export MSYS_NO_PATHCONV=1
+
 if [ ! -d "$DATA_DIRECTORY" ]; then
   echo "Initially creating persistent directory: $DATA_DIRECTORY"
   mkdir -p "$DATA_DIRECTORY"
@@ -21,8 +24,8 @@ fi
 docker pull owasp/dependency-check:$DC_VERSION
 
 docker run --rm \
-  -e user=$USER \
-  -u $(id -u ${USER}):$(id -g ${USER}) \
+  -e user=$(whoami) \
+  -u $(id -u $(whoami)):$(id -g $(whoami)) \
   --volume $(pwd):/src:z \
   --volume "$DATA_DIRECTORY":/usr/share/dependency-check/data:z \
   --volume $(pwd)/odc-reports:/report:z \
