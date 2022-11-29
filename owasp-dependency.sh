@@ -16,9 +16,10 @@ if [ ! -d "$CACHE_DIRECTORY" ]; then
 fi
 
 # Make sure we are using the latest version
-docker pull owasp/dependency-check:$DC_VERSION
+docker pull --platform linux/amd64 owasp/dependency-check:$DC_VERSION
 
 docker run --rm \
+  --platform linux/amd64 \
   -e user=$USER \
   -u $(id -u ${USER}):$(id -g ${USER}) \
   --volume $(pwd):/src:z \
