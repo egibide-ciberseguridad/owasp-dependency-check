@@ -27,6 +27,7 @@ docker run --rm \
   --volume $(pwd)/odc-reports:/report:z \
   owasp/dependency-check:$DC_VERSION \
   --scan /src \
+  --enableExperimental \
   --format "ALL" \
   --project "$DC_PROJECT" \
   --out /report
