@@ -1,10 +1,10 @@
-# owasp-dependency
+# OWASP Dependency-Check
 
 [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/) en un contenedor Docker.
 
 ## Funcionamiento
 
-Lanzarlo en la carpeta raíz del proyecto a analizar:
+Lanzarlo desde la carpeta raíz del proyecto a analizar:
 
 Linux y macOS:
 
