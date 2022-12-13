@@ -4,18 +4,34 @@
 
 ## Funcionamiento
 
-Lanzarlo desde la carpeta raíz del proyecto a analizar:
+Lanzarlo desde la carpeta raíz del proyecto a analizar.
 
-Linux y macOS:
+### Windows
+
+```shell
+<ruta_a_este_repositorio>\owasp-dependency.bat
+```
+
+### Linux y macOS Intel
 
 ```shell
 <ruta_a_este_repositorio>/owasp-dependency.sh
 ```
 
-Windows:
+### macOS M1
+
+La primera vez, construir el contenedor:
 
 ```shell
-<ruta_a_este_repositorio>\owasp-dependency.bat
+make build
 ```
+
+Lanzar el script:
+
+```shell
+<ruta_a_este_repositorio>/owasp-dependency-m1.sh
+```
+
+## Informe
 
 El informe se genera en `~/mi_proyecto/odc-reports/dependency-check-report.html`.
