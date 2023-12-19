@@ -1,14 +1,19 @@
-FROM golang:1.17.1-alpine AS go
+ARG GO_VERSION
+ARG JAVA_VERSION
+ARG DOTNET_VERSION
+ARG ALPINE_VERSION
 
-FROM azul/zulu-openjdk-alpine:17 AS jlink
+FROM golang:${GO_VERSION}-alpine AS go
+
+FROM azul/zulu-openjdk-alpine:${JAVA_VERSION} AS jlink
 
 RUN "$JAVA_HOME/bin/jlink" --compress=2 --module-path /opt/java/openjdk/jmods --add-modules java.base,java.compiler,java.datatransfer,jdk.crypto.ec,java.desktop,java.instrument,java.logging,java.management,java.naming,java.rmi,java.scripting,java.security.sasl,java.sql,java.transaction.xa,java.xml,jdk.unsupported --output /jlinked
 
-FROM mcr.microsoft.com/dotnet/runtime:6.0-alpine3.14
+FROM mcr.microsoft.com/dotnet/runtime:${DOTNET_VERSION}-alpine${ALPINE_VERSION}
 
-ARG VERSION=7.4.1
-ARG POSTGRES_DRIVER_VERSION=42.2.19
-ARG MYSQL_DRIVER_VERSION=8.0.23
+ARG VERSION
+ARG POSTGRES_DRIVER_VERSION
+ARG MYSQL_DRIVER_VERSION
 ARG UID=1000
 ARG GID=1000
 
