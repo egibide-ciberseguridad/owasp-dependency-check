@@ -1,6 +1,9 @@
 @echo off
 
-set /p NVD_API_KEY=<"%~dp0\.nvd-api-key"
+NVD_API_KEY_FILE="%~dp0\.nvd-api-key"
+IF EXIST "%NVD_API_KEY_FILE%" (
+    set /p NVD_API_KEY=<"%NVD_API_KEY_FILE%"
+)
 
 set DC_VERSION="latest"
 set DC_DIRECTORY=%USERPROFILE%\OWASP-Dependency-Check

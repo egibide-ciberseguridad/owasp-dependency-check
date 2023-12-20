@@ -1,6 +1,9 @@
 #!/bin/sh
 
-NVD_API_KEY=$(cat "$(dirname "$0")/.nvd-api-key")
+NVD_API_KEY_FILE="$(dirname "$0")/.nvd-api-key"
+if [ -f "$NVD_API_KEY_FILE" ]; then
+  NVD_API_KEY=$(cat "$NVD_API_KEY_FILE")
+fi
 
 DC_VERSION="latest"
 DC_DIRECTORY=$HOME/OWASP-Dependency-Check
