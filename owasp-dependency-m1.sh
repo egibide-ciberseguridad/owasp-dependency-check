@@ -1,5 +1,7 @@
 #!/bin/sh
 
+NVD_API_KEY=$(cat "$(dirname "$0")/.nvd-api-key")
+
 DC_VERSION="latest"
 DC_DIRECTORY=$HOME/.owasp-dependency-check
 DC_PROJECT="dependency-check scan: $(pwd)"
@@ -25,6 +27,7 @@ docker run --rm \
   --volume "$DATA_DIRECTORY":/usr/share/dependency-check/data:z \
   --volume $(pwd)/odc-reports:/report:z \
   owasp-dependency-check-cli:$DC_VERSION \
+  --nvdApiKey "$NVD_API_KEY" \
   --scan /src \
   --enableExperimental \
   --format "ALL" \

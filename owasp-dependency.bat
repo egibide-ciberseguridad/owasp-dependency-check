@@ -1,5 +1,7 @@
 @echo off
 
+set /p NVD_API_KEY=<"%~dp0\.nvd-api-key"
+
 set DC_VERSION="latest"
 set DC_DIRECTORY=%USERPROFILE%\OWASP-Dependency-Check
 SET DC_PROJECT="dependency-check scan: %CD%"
@@ -23,6 +25,7 @@ docker run --rm ^
     --volume %DATA_DIRECTORY%:/usr/share/dependency-check/data ^
     --volume %CD%/odc-reports:/report ^
     owasp/dependency-check:%DC_VERSION% ^
+    --nvdApiKey "%NVD_API_KEY%" ^
     --scan /src ^
     --enableExperimental ^
     --format "ALL" ^
