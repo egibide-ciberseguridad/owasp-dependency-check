@@ -1,6 +1,6 @@
 @echo off
 
-NVD_API_KEY_FILE="%~dp0\.nvd-api-key"
+set NVD_API_KEY_FILE="%~dp0\.nvd-api-key"
 IF EXIST "%NVD_API_KEY_FILE%" (
     set /p NVD_API_KEY=<"%NVD_API_KEY_FILE%"
 )
