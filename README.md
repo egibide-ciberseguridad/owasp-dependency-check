@@ -4,7 +4,9 @@
 
 ## Funcionamiento
 
-Lanzarlo desde la carpeta raíz del proyecto a analizar.
+1. Obtener una [API Key para descargar la base de datos NVD](https://nvd.nist.gov/developers/request-an-api-key).
+2. Guardar la clave en un fichero con el nombre `.nvd-api-key`.
+3. Lanzar el script correspondiente desde la carpeta raíz del proyecto a analizar.
 
 ### Windows
 
